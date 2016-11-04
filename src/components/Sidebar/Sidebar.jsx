@@ -8,10 +8,20 @@ class Sidebar extends Component {
     activeForces: PropTypes.array
   }
 
+  renderNodeSection() {
+    return (
+      <div className='section'>
+        <h3>Nodes</h3>
+        
+
+      </div>
+    );
+  }
+
   render() {
     return (
-      <div>
-        <p>Sidebar</p>
+      <div className='Sidebar'>
+        {this.renderNodeSection()}
       </div>
     );
   }

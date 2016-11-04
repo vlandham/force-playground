@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import './App.css';
 
-import * as d3 from 'd3';
+import { makeNodes } from './util/data';
+
+import { FORCE_X } from './util/forces';
 
 import {Col, Row} from 'react-bootstrap';
 
@@ -13,21 +15,14 @@ class App extends Component {
     super(props);
 
     this.state = {
-      activeForces: [],
+      activeForces: [
+        { type: FORCE_X, options: { strength: 0.2 }}
+      ],
       data: {
         count: 10
       }
     };
   }
-
-  getNodes(count) {
-    return d3.range(count).map(function(i) {
-      return {
-        r: Math.random() * 14 + 4
-      };
-    })
-  }
-
 
   renderSidebar() {
     const { activeForces } = this.state;
@@ -43,7 +38,7 @@ class App extends Component {
   renderForce() {
     const { activeForces, data } = this.state;
 
-    const nodes = this.getNodes(data.count);
+    const nodes = makeNodes(data.count);
 
     return (
       <Col md={8}>
