@@ -1,15 +1,29 @@
 import React, { Component, PropTypes } from 'react';
+import addComputedProps from 'react-computed-props';
 
 import * as d3 from 'd3';
 
 import './ForcePanel.css';
 
+import { makeNodes } from '../../util/data';
+
 const tau = 2 * Math.PI;
+
+function computeProps(props) {
+  const { nodeCount } = props;
+  const nodes = makeNodes(nodeCount);
+
+  return {
+    nodes,
+  }
+}
+
 
 class ForcePanel extends Component {
 
   static propTypes = {
     activeForces: PropTypes.array,
+    nodeCount: PropTypes.number,
     nodes: PropTypes.array,
     width: PropTypes.number,
     height: PropTypes.number,
@@ -73,7 +87,8 @@ class ForcePanel extends Component {
       .force("x", d3.forceX().strength(0.002))
       .force("y", d3.forceY().strength(0.002))
       .force("collide", d3.forceCollide().radius(function(d) { return d.r + 0.5; }).iterations(2))
-      .on("tick", this.ticked);
+      .on("tick", this.ticked)
+      .alpha(1.0);
 
   }
 
@@ -106,4 +121,4 @@ class ForcePanel extends Component {
   }
 }
 
-export default ForcePanel;
+export default addComputedProps(computeProps)(ForcePanel);

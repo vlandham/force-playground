@@ -1,5 +1,8 @@
 import React, { Component, PropTypes } from 'react';
 
+import NodeControlsContainer from '../../containers/NodeControlsContainer';
+import ForcesControlsContainer from '../../containers/ForcesControlsContainer';
+
 import './Sidebar.css';
 
 class Sidebar extends Component {
@@ -12,8 +15,17 @@ class Sidebar extends Component {
     return (
       <div className='section'>
         <h3>Nodes</h3>
-        
+        <NodeControlsContainer />
+      </div>
 
+    );
+  }
+
+  renderForcesSection() {
+    return (
+      <div className='section'>
+        <h3>Forces</h3>
+        <ForcesControlsContainer />
       </div>
     );
   }
@@ -22,6 +34,7 @@ class Sidebar extends Component {
     return (
       <div className='Sidebar'>
         {this.renderNodeSection()}
+        {this.renderForcesSection()}
       </div>
     );
   }
