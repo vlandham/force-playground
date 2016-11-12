@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react';
+import Slider from 'react-rangeslider';
 
 import './NodeControls.css';
 
@@ -12,8 +13,9 @@ class NodeControls extends Component {
   constructor(props) {
     super(props);
 
-    this.increaseCount = this.increaseCount.bind(this)
-    this.decreaseCount = this.decreaseCount.bind(this)
+    this.increaseCount = this.increaseCount.bind(this);
+    this.decreaseCount = this.decreaseCount.bind(this);
+    this.onChange = this.onChange.bind(this);
   }
 
   increaseCount() {
@@ -29,14 +31,24 @@ class NodeControls extends Component {
     onCountChange(newCount);
   }
 
+  onChange(value) {
+
+  }
+
 
   render() {
-    const { count } = this.props;
+    const { count, onCountChange } = this.props;
     return (
       <div className='NodeControls'>
         <p>node count: {count}</p>
-        <button onClick={this.increaseCount}>INCREASE</button>
-        <button onClick={this.decreaseCount}>DECREASE</button>
+        <Slider
+          min={0}
+          max={500}
+          step={10}
+          value={count}
+          orientation="horizontal"
+          onChange={onCountChange}
+        />
       </div>
     )
   }

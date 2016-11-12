@@ -1,12 +1,12 @@
 import { handleActions } from 'redux-actions';
 
 export const initialState = {
-  count: 5
+  nodeCount: 30
 }
 
 const actionHandlers = {
   CHANGE_NODE_COUNT: (state, action) => ({
-    count: action.payload
+    nodeCount: action.payload
   })
 }
 

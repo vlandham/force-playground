@@ -1,11 +1,11 @@
 import { connect } from 'react-redux';
-import { changeCount } from '../redux/nodes/actions';
+import { changeCount } from '../redux/sim/actions';
 import NodeControls from '../components/NodeControls/NodeControls';
 
 
 const mapStateToProps = (state) => {
   return {
-    count: state.nodes.count
+    count: state.sim.nodeCount
   }
 }
 
