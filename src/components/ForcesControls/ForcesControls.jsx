@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 
-import { FORCE_X, FORCE_Y } from '../../util/forces';
+import { FORCE_X } from '../../util/forces';
 
 import './ForcesControls.css';
 
@@ -8,14 +8,14 @@ class ForcesControls extends Component {
 
   static propTypes = {
     forces: PropTypes.array,
-    onForceAdd: PropTypes.func
+    onForceAdd: PropTypes.func,
   }
 
   constructor(props) {
     super(props);
 
-    this.addForce = this.addForce.bind(this)
-    this.removeForce = this.removeForce.bind(this)
+    this.addForce = this.addForce.bind(this);
+    this.removeForce = this.removeForce.bind(this);
   }
 
   addForce() {
@@ -36,23 +36,22 @@ class ForcesControls extends Component {
       <div key={index} className='forceConfig'>
         {forceConfig.name}
       </div>
-    )
-
+    );
   }
-
 
   render() {
     const { forces } = this.props;
     return (
       <div className='ForcesControls'>
         <p>force count: {forces.length}</p>
-        {forces.map((f,i) => this.renderForce(f,i))}
         <button onClick={this.addForce}>ADD FORCE</button>
         <button onClick={this.removeForce}>REMOVE FORCE</button>
+        <div>
+          {forces.map((f,i) => this.renderForce(f,i))}
+        </div>
       </div>
-    )
+    );
   }
-
 }
 
 export default ForcesControls;

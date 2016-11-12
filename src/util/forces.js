@@ -23,7 +23,9 @@ export function getForceConfig(forceId) {
 }
 
 export function constructForce(forceAttrs) {
-  const forceConfig = forcesConfig[forceAttrs.type]
+  const forceConfig = forcesConfig[forceAttrs.id];
 
-  return forceConfig;
+  const force = forceConfig.func.call()
+
+  return force;
 }

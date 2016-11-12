@@ -3,7 +3,8 @@ import ForcePanel from '../components/ForcePanel/ForcePanel';
 
 const mapStateToProps = (state) => {
   return {
-    nodeCount: state.nodes.count
+    nodeCount: state.nodes.count,
+    forceConfigs: state.forces.forces
   }
 }
 

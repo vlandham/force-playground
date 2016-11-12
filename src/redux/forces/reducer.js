@@ -12,6 +12,7 @@ const actionHandlers = {
   }),
   REMOVE_FORCE: (state, action) => {
 
+    // TODO: better way to do this?
     const forces = state.forces.slice();
     forces.splice(action.payload, 1)
 

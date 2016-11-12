@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import addComputedProps from 'react-computed-props';
+import { constructForce } from '../../util/forces';
 
 import * as d3 from 'd3';
 
@@ -10,11 +11,14 @@ import { makeNodes } from '../../util/data';
 const tau = 2 * Math.PI;
 
 function computeProps(props) {
-  const { nodeCount } = props;
+  const { nodeCount, forceConfigs } = props;
   const nodes = makeNodes(nodeCount);
+
+  const forces = forceConfigs.map((f) => constructForce(f));
 
   return {
     nodes,
+    forces,
   }
 }
 
@@ -23,6 +27,8 @@ class ForcePanel extends Component {
 
   static propTypes = {
     activeForces: PropTypes.array,
+    forces: PropTypes.array,
+    forceConfigs: PropTypes.array,
     nodeCount: PropTypes.number,
     nodes: PropTypes.array,
     width: PropTypes.number,
@@ -31,7 +37,8 @@ class ForcePanel extends Component {
 
   static defaultProps = {
     width: 600,
-    height: 800,
+    height: 400,
+    forces: [],
     nodes: [],
   }
 
@@ -79,16 +86,22 @@ class ForcePanel extends Component {
 
   update() {
 
-    const { nodes } = this.props;
+    const { nodes, forces } = this.props;
 
 
     this.simulation = d3.forceSimulation(nodes)
       .velocityDecay(0.2)
-      .force("x", d3.forceX().strength(0.002))
-      .force("y", d3.forceY().strength(0.002))
-      .force("collide", d3.forceCollide().radius(function(d) { return d.r + 0.5; }).iterations(2))
+      // .force("x", d3.forceX().strength(0.002))
+      // .force("y", d3.forceY().strength(0.002))
+      // .force("collide", d3.forceCollide().radius(function(d) { return d.r + 0.5; }).iterations(2))
       .on("tick", this.ticked)
       .alpha(1.0);
+
+    const that = this;
+    forces.forEach(function(force, index) {
+      const forceName = `force-${index}`;
+      that.simulation.force(forceName, force)
+    });
 
   }
 
