@@ -19,6 +19,12 @@ const actionHandlers = {
     return {
       forces: forces
     };
+  },
+  UPDATE_FORCE: (state, action) => {
+    const attr = state.forces[action.payload.forceIndex].attrs[action.payload.attrIndex];
+    console.log(attr);
+    return {
+    }
   }
 }
 

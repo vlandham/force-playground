@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { addForce, removeForce } from '../redux/forces/actions';
+import { addForce, removeForce, updateForce } from '../redux/forces/actions';
 import ForcesControls from '../components/ForcesControls/ForcesControls';
 
 
@@ -16,6 +16,9 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     },
     onForceRemove: (forceIndex) => {
       dispatch(removeForce(forceIndex))
+    }
+    onForceUpdate: (forceIndex, attrIndex, newValue) => {
+      dispatch(updateForce({forceIndex, attrIndex, newValue}))
     }
   }
 }

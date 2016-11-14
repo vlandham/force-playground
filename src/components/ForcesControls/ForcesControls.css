@@ -1,4 +1,22 @@
 
 .ForcesControls {
-  
+
+}
+
+.ForcesControls .forceConfig {
+  padding-top: 10px;
+  min-height: 30px;
+  width: 100%;
+}
+
+.ForcesControls .count {
+}
+
+.ForcesControls .dropdown {
+  padding-top: 30px;
+}
+
+.ForcesControls .forceConfig .remove {
+  float:right;
+  padding-right: 15px;
 }

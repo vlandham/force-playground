@@ -24,7 +24,6 @@ class Sidebar extends Component {
   renderForcesSection() {
     return (
       <div className='section'>
-        <h3>Forces</h3>
         <ForcesControlsContainer />
       </div>
     );
