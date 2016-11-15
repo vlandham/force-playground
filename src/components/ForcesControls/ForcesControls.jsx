@@ -1,8 +1,13 @@
 import React, { Component, PropTypes } from 'react';
 
-import { Row, Col, DropdownButton, MenuItem } from 'react-bootstrap';
+import {
+  Row,
+  Col, DropdownButton,
+  MenuItem } from 'react-bootstrap';
 
 import { forceKeys, getForceConfig } from '../../util/forces';
+
+import AttrControl from './AttrControl';
 
 import './ForcesControls.css';
 
@@ -40,22 +45,28 @@ class ForcesControls extends Component {
 
   }
 
-  renderAttr(attr, index) {
+  renderAttr(attr, index, forceIndex) {
+    const { onForceUpdate } = this.props;
+
     return (
-      <p key={index}>
-        {attr.name}: {attr.default}
-      </p>
-    )
+      <AttrControl
+        key={index}
+        attrIndex={index}
+        attr={attr}
+        forceIndex={forceIndex}
+        onChange={onForceUpdate}
+      />
+    );
   }
 
   renderForce(forceConfig, index) {
     return (
-      <div key={index} className='forceConfig'>
+      <div key={index} className='forceConfig clearfix'>
         <span className='name'>{forceConfig.name}</span>
         <span className='remove'>
           <button onClick={() => this.removeForce(index)}>X</button>
         </span>
-        {forceConfig.attrs.map((a, i) => this.renderAttr(a, i))}
+        {forceConfig.attrs.map((a, i) => this.renderAttr(a, i, index))}
       </div>
     );
   }

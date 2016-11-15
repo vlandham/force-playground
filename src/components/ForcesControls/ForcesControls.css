@@ -20,3 +20,7 @@
   float:right;
   padding-right: 15px;
 }
+
+.ForcesControls .attrControl {
+  padding-top:10px;
+}

@@ -21,9 +21,11 @@ const actionHandlers = {
     };
   },
   UPDATE_FORCE: (state, action) => {
-    const attr = state.forces[action.payload.forceIndex].attrs[action.payload.attrIndex];
-    console.log(attr);
+    const forces = state.forces.slice();
+    const attr = forces[action.payload.forceIndex].attrs[action.payload.attrIndex];
+    attr.default = action.payload.newValue;
     return {
+      forces: forces
     }
   }
 }

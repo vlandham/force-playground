@@ -16,7 +16,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     },
     onForceRemove: (forceIndex) => {
       dispatch(removeForce(forceIndex))
-    }
+    },
     onForceUpdate: (forceIndex, attrIndex, newValue) => {
       dispatch(updateForce({forceIndex, attrIndex, newValue}))
     }

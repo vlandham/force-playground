@@ -14,7 +14,8 @@ export const forcesConfig = {
     name: 'forceX',
     func: d3.forceX,
     attrs: [
-      { name: 'strength', type: 'number', default: 0.2, min: 0.0, max: 1.0}
+      { name: 'strength', type: 'number', default: 0.2, min: 0.0, max: 1.0 },
+      { name: 'x', type: 'number', default: 0 }
     ]
   },
   FORCE_Y: {
@@ -22,7 +23,8 @@ export const forcesConfig = {
     name: 'forceY',
     func: d3.forceY,
     attrs: [
-      { name: 'strength', type: 'number', default: 0.2, min: 0.0, max: 1.0}
+      { name: 'strength', type: 'number', default: 0.2, min: 0.0, max: 1.0 },
+      { name: 'y', type: 'number', default: 0 }
     ]
   },
   FORCE_CENTER: {
@@ -30,7 +32,9 @@ export const forcesConfig = {
     name: 'forceCenter',
     func: d3.forceCenter,
     attrs:[
-      { name: 'x', type: 'number', default: 0}
+      { name: 'x', type: 'number', default: 0 },
+      { name: 'y', type: 'number', default: 0 },
+
     ]
   },
   FORCE_COLLIDE: {
@@ -38,7 +42,10 @@ export const forcesConfig = {
     name: 'forceCollide',
     func: d3.forceCollide,
     attrs: [
-      { name: 'x', type: 'number', default: 0}
+
+      { name: 'strength', type: 'number', default: 0.7, min: 0.0, max: 1.0 },
+      { name: 'radius', type: 'number', default: 3 },
+      { name: 'iterations', type: 'number', default: 1 }
     ]
   },
   FORCE_MANY_BODY: {
@@ -46,20 +53,28 @@ export const forcesConfig = {
     name: 'forceManyBody',
     func: d3.forceManyBody,
     attrs: [
-      { name: 'x', type: 'number', default: 0}
+      { name: 'strength', type: 'number', default: -30 },
+      { name: 'theta', type: 'number', default: 0.9 }
     ]
   },
 };
 
 export function getForceConfig(forceId) {
-  return forcesConfig[forceId];
+  return Object.assign({}, forcesConfig[forceId]);
+}
+
+function getAttrValue(attr) {
+  return +attr.default;
 }
 
 export function constructForce(forceAttrs) {
   const forceConfig = forcesConfig[forceAttrs.id];
 
-  const force = forceConfig.func.call()
+  const force = forceConfig.func.call();
 
+  forceConfig.attrs.forEach((attr) => {
+    force[attr.name](getAttrValue(attr));
+  });
 
   return force;
 }
