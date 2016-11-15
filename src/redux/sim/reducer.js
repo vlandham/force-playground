@@ -1,7 +1,7 @@
 import { handleActions } from 'redux-actions';
 
 export const initialState = {
-  nodeCount: 30
+  nodeCount: 150
 }
 
 const actionHandlers = {

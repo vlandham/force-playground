@@ -11,7 +11,7 @@ class App extends Component {
 
   renderSidebar() {
     return (
-      <Col md={4}>
+      <Col md={4} sm={4}>
         <Sidebar />
       </Col>
     );
@@ -20,7 +20,7 @@ class App extends Component {
   renderForce() {
 
     return (
-      <Col md={8}>
+      <Col md={8} sm={8}>
         <ForceContainer />
       </Col>
     );

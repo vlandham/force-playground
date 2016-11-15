@@ -30,7 +30,7 @@ class AttrControl extends Component {
     return (
       <Form className="attrControl pull-right">
         <FormGroup>
-          <Col sm={6}>
+          <Col sm={4}>
             <ControlLabel className="pull-right">{attr.name}</ControlLabel>
           </Col>
           <Col sm={6}>

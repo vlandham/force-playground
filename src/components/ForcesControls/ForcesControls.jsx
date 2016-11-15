@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 
 import {
-  Row,
+  Row, Glyphicon,
   Col, DropdownButton,
   MenuItem } from 'react-bootstrap';
 
@@ -62,10 +62,12 @@ class ForcesControls extends Component {
   renderForce(forceConfig, index) {
     return (
       <div key={index} className='forceConfig clearfix'>
-        <span className='name'>{forceConfig.name}</span>
-        <span className='remove'>
-          <button onClick={() => this.removeForce(index)}>X</button>
-        </span>
+        <p className='title'>
+          <span className='name'>{forceConfig.name}</span>
+          <span className='remove'>
+            <Glyphicon glyph='remove' onClick={() => this.removeForce(index)} />
+          </span>
+        </p>
         {forceConfig.attrs.map((a, i) => this.renderAttr(a, i, index))}
       </div>
     );
@@ -94,7 +96,7 @@ class ForcesControls extends Component {
             <h3>Forces</h3>
             <p className='count'>force count: {forces.length}</p>
           </Col>
-          <Col md={5} className={'pull-right'}>
+          <Col md={6} className={'pull-right'}>
             {this.renderDropdownButton()}
           </Col>
         </Row>

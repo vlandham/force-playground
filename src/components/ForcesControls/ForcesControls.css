@@ -9,11 +9,21 @@
   width: 100%;
 }
 
-.ForcesControls .count {
+.ForcesControls .title {
+  background-color: #444;
+  color: white;
+  padding: 10px 10px 5px 10px;
+  width:100%;
+}
+
+.ForcesControls .remove:hover {
+  color: tomato;
+  cursor: pointer;
 }
 
 .ForcesControls .dropdown {
   padding-top: 30px;
+  margin-right: 15px;
 }
 
 .ForcesControls .forceConfig .remove {
