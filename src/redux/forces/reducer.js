@@ -3,7 +3,11 @@ import { handleActions } from 'redux-actions';
 import { getForceConfig } from '../../util/forces';
 
 export const initialState = {
-  forces: []
+  forces: [
+    getForceConfig('FORCE_X'),
+    getForceConfig('FORCE_Y'),
+    getForceConfig('FORCE_COLLIDE')
+  ]
 }
 
 const actionHandlers = {

@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
-import { changeCount } from '../redux/sim/actions';
-import NodeControls from '../components/NodeControls/NodeControls';
+import { changeCount, restartSim } from '../redux/sim/actions';
+import NodeControls from '../components/SimulationControls/SimulationControls';
 
 
 const mapStateToProps = (state) => {
@@ -13,13 +13,16 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     onCountChange: (newCount) => {
       dispatch(changeCount(newCount))
+    },
+    onRestart: () => {
+      dispatch(restartSim())
     }
   }
 }
 
-const NodeControlsContainer = connect(
+const SimulationControlsContainer = connect(
   mapStateToProps,
   mapDispatchToProps
 )(NodeControls);
 
-export default NodeControlsContainer;
+export default SimulationControlsContainer;

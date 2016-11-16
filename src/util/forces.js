@@ -44,7 +44,7 @@ export const forcesConfig = {
     attrs: [
 
       { name: 'strength', type: 'number', default: 0.7, min: 0.0, max: 1.0 },
-      { name: 'radius', type: 'number', default: 3 },
+      { name: 'radius', type: 'number', default: 10 },
       { name: 'iterations', type: 'number', default: 1 }
     ]
   },

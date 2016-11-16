@@ -1,9 +1,9 @@
 import React, { Component, PropTypes } from 'react';
 import Slider from 'react-rangeslider';
 
-import './NodeControls.css';
+import './SimulationControls.css';
 
-class NodeControls extends Component {
+class SimulationControls extends Component {
 
   static propTypes = {
     count: PropTypes.number,
@@ -39,20 +39,23 @@ class NodeControls extends Component {
   render() {
     const { count, onCountChange } = this.props;
     return (
-      <div className='NodeControls'>
-        <p>node count: {count}</p>
-        <Slider
-          min={0}
-          max={500}
-          step={10}
-          value={count}
-          orientation="horizontal"
-          onChange={onCountChange}
-        />
+      <div className='SimulationControls'>
+        <div className='NodeControls'>
+          <p>node count: {count}</p>
+          <Slider
+            min={0}
+            max={500}
+            step={10}
+            value={count}
+            orientation="horizontal"
+            onChange={onCountChange}
+          />
+        </div>
+
       </div>
     )
   }
 
 }
 
-export default NodeControls;
+export default SimulationControls;

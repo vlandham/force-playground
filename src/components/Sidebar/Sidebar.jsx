@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 
-import NodeControlsContainer from '../../containers/NodeControlsContainer';
+import SimulationControlsContainer from '../../containers/SimulationControlsContainer';
 import ForcesControlsContainer from '../../containers/ForcesControlsContainer';
 
 import './Sidebar.css';
@@ -14,8 +14,8 @@ class Sidebar extends Component {
   renderNodeSection() {
     return (
       <div className='section'>
-        <h3>Nodes</h3>
-        <NodeControlsContainer />
+        <h3>Simulation</h3>
+        <SimulationControlsContainer />
       </div>
 
     );
