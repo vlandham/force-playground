@@ -1,4 +1,10 @@
 
+
+.draggable {
+  cursor: ew-resize;
+  border-bottom: 1px dotted #000;
+}
+
 /**
 * Rangeslider
 */

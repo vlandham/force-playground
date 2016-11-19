@@ -7,7 +7,7 @@ import {
 
 import { forceKeys, getForceConfig } from '../../util/forces';
 
-import AttrControl from './AttrControl';
+import AttrControl from '../AttrControl/AttrControl';
 
 import './ForcesControls.css';
 
@@ -39,11 +39,6 @@ class ForcesControls extends Component {
     onForceRemove(index);
   }
 
-  updateForce(forceIndex, attrIndex, newValue) {
-
-    console.log(newValue)
-
-  }
 
   renderAttr(attr, index, forceIndex) {
     const { onForceUpdate } = this.props;

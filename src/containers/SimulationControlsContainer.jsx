@@ -1,11 +1,12 @@
 import { connect } from 'react-redux';
-import { changeCount, restartSim } from '../redux/sim/actions';
+import { changeCount, restartSim, updateSim } from '../redux/sim/actions';
 import NodeControls from '../components/SimulationControls/SimulationControls';
 
 
 const mapStateToProps = (state) => {
   return {
-    count: state.sim.nodeCount
+    count: state.sim.nodeCount,
+    attrs: state.sim.attrs,
   }
 }
 
@@ -16,6 +17,9 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     },
     onRestart: () => {
       dispatch(restartSim())
+    },
+    onAttrUpdate: (forceIndex, attrIndex, newValue) => {
+      dispatch(updateSim({forceIndex, attrIndex, newValue}))
     }
   }
 }

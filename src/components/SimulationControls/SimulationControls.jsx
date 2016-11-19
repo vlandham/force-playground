@@ -1,13 +1,16 @@
 import React, { Component, PropTypes } from 'react';
 import Slider from 'react-rangeslider';
 
+import AttrControl from '../AttrControl/AttrControl';
+
 import './SimulationControls.css';
 
 class SimulationControls extends Component {
 
   static propTypes = {
     count: PropTypes.number,
-    onCountChange: PropTypes.func
+    onCountChange: PropTypes.func,
+    onAttrUpdate: PropTypes.func,
   }
 
   constructor(props) {
@@ -35,9 +38,22 @@ class SimulationControls extends Component {
 
   }
 
+  renderAttr(attr, index) {
+    const { onAttrUpdate } = this.props;
+
+    return (
+      <AttrControl
+        key={index}
+        attrIndex={index}
+        attr={attr}
+        onChange={onAttrUpdate}
+      />
+    );
+  }
+
 
   render() {
-    const { count, onCountChange } = this.props;
+    const { count, onCountChange, attrs } = this.props;
     return (
       <div className='SimulationControls'>
         <div className='NodeControls'>
@@ -51,6 +67,7 @@ class SimulationControls extends Component {
             onChange={onCountChange}
           />
         </div>
+        {attrs.map((a, i) => this.renderAttr(a, i))}
 
       </div>
     )

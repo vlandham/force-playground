@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import addComputedProps from 'react-computed-props';
-import { constructForce } from '../../util/forces';
+import { constructForce, applyAttrs } from '../../util/forces';
 
 import * as d3 from 'd3';
 
@@ -26,6 +26,7 @@ function computeProps(props) {
 class ForcePanel extends Component {
 
   static propTypes = {
+    attrs: PropTypes.array,
     activeForces: PropTypes.array,
     forces: PropTypes.array,
     forceConfigs: PropTypes.array,
@@ -40,6 +41,7 @@ class ForcePanel extends Component {
     height: 400,
     forces: [],
     nodes: [],
+    attrs: [],
   }
 
   constructor(props) {
@@ -86,16 +88,18 @@ class ForcePanel extends Component {
 
   update() {
 
-    const { nodes, forces } = this.props;
-
+    const { nodes, forces, attrs } = this.props;
 
     this.simulation = d3.forceSimulation(nodes)
       .velocityDecay(0.2)
-      // .force("x", d3.forceX().strength(0.002))
-      // .force("y", d3.forceY().strength(0.002))
-      // .force("collide", d3.forceCollide().radius(function(d) { return d.r + 0.5; }).iterations(2))
       .on("tick", this.ticked)
       .alpha(1.0);
+
+    applyAttrs(this.simulation, attrs);
+
+    // attrs.forEach((attr) => {
+    //   this.simulation[attr.name](getAttrValue(attr));
+    // });
 
     const that = this;
     forces.forEach(function(force, index) {
@@ -127,7 +131,7 @@ class ForcePanel extends Component {
 
   render() {
     return (
-      <div>
+      <div className="ForcePanel">
         <div ref={(node) => { this.root = node; }} />
       </div>
     );
