@@ -9,15 +9,15 @@
 * Rangeslider
 */
 .rangeslider {
-  margin: 20px 0;
+  margin: 20px 10px 15px 20px;
   position: relative;
   background: #e6e6e6;
-  width: 90%;
+  width: 85%;
 }
 .rangeslider .rangeslider__fill,
 .rangeslider .rangeslider__handle {
   position: absolute;
-  width: 90%;
+  width: 85%;
 }
 .rangeslider,
 .rangeslider .rangeslider__fill {
@@ -57,21 +57,22 @@
 * Rangeslider - Vertical slider
 */
 .rangeslider-vertical {
-  margin: 20px auto;
-  height: 150px;
-  max-width: 10px;
+  /*margin: 20px auto;*/
+  margin: 0 0 0 0;
+  height: 35px;
+  max-width: 8px;
   background: none;
 }
 .rangeslider-vertical .rangeslider__fill {
   width: 100%;
-  background: #27ae60;
+  background: #444;
   box-shadow: none;
   bottom: 0;
 }
 .rangeslider-vertical .rangeslider__handle {
-  width: 30px;
-  height: 10px;
-  left: -10px;
+  width: 10px;
+  height: 5px;
+  left: -1px;
 }
 .rangeslider-vertical .rangeslider__handle:active {
   box-shadow: none;

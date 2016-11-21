@@ -12,8 +12,7 @@
 .ForcesControls .title {
   background-color: #444;
   color: white;
-  padding: 10px 10px 5px 10px;
-  width:100%;
+  padding: 10px 10px 5px 20px;
 }
 
 .ForcesControls .remove:hover {
@@ -28,5 +27,5 @@
 
 .ForcesControls .forceConfig .remove {
   float:right;
-  padding-right: 15px;
+  padding-right: 5px;
 }

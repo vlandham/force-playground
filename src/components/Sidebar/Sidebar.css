@@ -1,7 +1,6 @@
 
 .Sidebar {
-  padding-left: 15px;
-  padding-right: 15px;
+  /*padding-right: 15px;*/
   padding-top: 20px;
   padding-bottom: 20px;
   background-color: #ddd;
@@ -10,5 +9,7 @@
 
 }
 
-.Sidebar h3 {
+.Sidebar h3,
+.Sidebar p {
+  padding-left: 10px;
 }

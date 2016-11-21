@@ -12,8 +12,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    onCountChange: (newCount) => {
-      dispatch(changeCount(newCount))
+    onCountChange: (forceIndex, attrIndex, newValue) => {
+      dispatch(changeCount(newValue))
     },
     onRestart: () => {
       dispatch(restartSim())

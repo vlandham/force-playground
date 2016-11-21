@@ -2,6 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import Slider from 'react-rangeslider';
 
 import AttrControl from '../AttrControl/AttrControl';
+import NumControl from '../AttrControl/NumControl';
 
 import './SimulationControls.css';
 
@@ -56,17 +57,14 @@ class SimulationControls extends Component {
     const { count, onCountChange, attrs } = this.props;
     return (
       <div className='SimulationControls'>
-        <div className='NodeControls'>
-          <p>node count: {count}</p>
-          <Slider
-            min={0}
-            max={500}
-            step={10}
-            value={count}
-            orientation="horizontal"
-            onChange={onCountChange}
-          />
-        </div>
+        <NumControl
+          name={'node count'}
+          value={count}
+          min={0}
+          max={500}
+          rate={10}
+          onChange={onCountChange}
+        />
         {attrs.map((a, i) => this.renderAttr(a, i))}
 
       </div>

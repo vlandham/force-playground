@@ -37,8 +37,8 @@ class ForcePanel extends Component {
   }
 
   static defaultProps = {
-    width: 600,
-    height: 400,
+    width: 700,
+    height: 600,
     forces: [],
     nodes: [],
     attrs: [],
